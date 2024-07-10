@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Employee List</h1>
+    <ul>
+        <li *ngFor="let employee of employees" class="employee-item">
+            {{employee.name}} - {{employee.salary}} - {{employee.age}}
+            <button (click)="getEmployee(employee.id)">Edit</button>
+            <button (click)="deleteEmployee(employee.id)">Delete</button>
+        </li>
+    </ul>
+
+    <h2>{{ isEdit ? 'Edit' : 'Add' }} Employee</h2>
+    <form (ngSubmit)="isEdit ? updateEmployee() : addEmployee()" class="employee-form">
+        <input [(ngModel)]="employee.name" name="name" placeholder="Name" required>
+        <input [(ngModel)]="employee.salary" name="salary" placeholder="Salary" required>
+        <input [(ngModel)]="employee.age" name="age" placeholder="Age" required>
+        <button type="submit">{{ isEdit ? 'Update' : 'Add' }}</button>
+    </form>
+</div>
